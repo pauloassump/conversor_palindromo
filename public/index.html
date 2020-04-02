@@ -1,0 +1,93 @@
+<html>
+
+<head>
+  <title>Verificador de Palíndromo</title>
+</head>
+
+<body>
+  <div>
+  </div>
+  <button data-test="limpar-dados" onclick="removeLinha()">Apagar histórico</button>
+  <h2>Verificador de Palíndromo</h2>
+  <input data-test="entrada" type="text" id=valor>
+  </div>
+  <table id="tabela">
+    <tr>
+      <td>Frase</td>
+      <td>Palíndromo</td>
+    </tr>
+  </table>
+</body>
+
+</html>
+
+<script>
+  var text = document.getElementById("valor")
+
+  text.addEventListener("keypress", function (event) {
+    var capturando = document.getElementById('valor').value // Pegou valor no input
+ 
+    var resultado = capturando.split('').reverse().join('') // Inverteu valor no input
+  
+    if (event.keyCode == 13) {
+      //Recupera as informações do campo dos formulários
+      var valor = text.value
+
+      //Encontra o elemento tabela
+      tabela = document.getElementById("tabela");
+
+      //Inclui uma linha no elemento tabela <tr></tr>
+      //informei -1 para criar a linha no final da tabela
+      var linha = tabela.insertRow(-1);
+
+      //Adiciona dua coluna na linha criada <td></td> <td></td>
+      var coluna1 = linha.insertCell(0);
+      var coluna2 = linha.insertCell(1);
+
+      //Inclui o valor do campo do formulário em sua respectiva coluna
+      coluna1.innerHTML = valor;
+
+      var resultado = capturando.split('').reverse().join('')
+      capturando = document.getElementById('valor').value
+      document.getElementById('valor').innerHTML = capturando
+
+      if (resultado == capturando) {
+        coluna2.innerHTML = 'Sim'
+        console.log(capturando)
+        console.log(resultado)
+      } else {
+        coluna2.innerHTML = 'Não'
+        console.log(capturando)
+        console.log(resultado)
+      }
+      document.getElementById('valor').value = ""
+    }
+  })
+
+  function removeLinha() {
+    while (tabela.rows.length > 0) {
+      tabela.deleteRow(0);
+    }
+  }  
+
+</script>
+
+<style>
+  .info p {
+    display: inline;
+    font-size: 1.3rem;
+  }
+
+  .result-palind {
+    float: right;
+  }
+
+  .btn-clear {
+    float: right;
+    margin-bottom: 10px;
+  }
+
+  .text-palind {
+    float: right;
+  }
+</style>
