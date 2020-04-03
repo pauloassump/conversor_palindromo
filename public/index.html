@@ -11,6 +11,8 @@
   <h2>Verificador de Palíndromo</h2>
   <input data-test="entrada" type="text" id=valor>
   </div>
+  <p data-verificado="positivo" id="positivo">
+  <p data-verificado="negativo" id="negativo">
   <table id="tabela">
     <tr>
       <td>Frase</td>
@@ -24,7 +26,9 @@
 <script>
   var text = document.getElementById("valor")
 
-  text.addEventListener("keypress", function (event) {
+  var list = []
+
+  text.addEventListener("keyup", function (event) {
     var capturando = document.getElementById('valor').value // Pegou valor no input
  
     var resultado = capturando.split('').reverse().join('') // Inverteu valor no input
@@ -51,14 +55,15 @@
       capturando = document.getElementById('valor').value
       document.getElementById('valor').innerHTML = capturando
 
+      var respostaPositiva = 'Sim'
+      var respostaNegativa = 'Não'
+
       if (resultado == capturando) {
         coluna2.innerHTML = 'Sim'
-        console.log(capturando)
-        console.log(resultado)
+        list.push(document.getElementById('positivo').innerHTML = respostaPositiva)
       } else {
         coluna2.innerHTML = 'Não'
-        console.log(capturando)
-        console.log(resultado)
+        list.push(document.getElementById('negativo').innerHTML = respostaNegativa)
       }
       document.getElementById('valor').value = ""
     }
